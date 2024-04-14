@@ -36,7 +36,7 @@ from customers;
 
 select *
 from customers
-order by country asc
+order by country 
 
 
 
@@ -47,6 +47,8 @@ order by country asc
 SELECT *
 FROM orders
 ORDER BY employee_id, order_date;
+
+
 
 
 
@@ -77,6 +79,9 @@ from region;
 
 
 
+
+
+
 --  NULL - COALESCE
 
 
@@ -87,6 +92,7 @@ FROM Customers
 WHERE region IS NULL;
 
 
+
 --  9.	Obtener Product_Name y Unit_Price de la tabla Products, y si Unit_Price es Null, use el precio estándar de $10 en su lugar.
 
 SELECT Product_Name, COALESCE(Unit_Price, 10) AS Unit_Price
@@ -95,7 +101,12 @@ FROM Products;
 -- “Si el precio unitario es NULL, la función COALESCE lo reemplaza con el valor 10 “
 
 
+
+
+
+
 -- INNER JOIN
+
 
 --  10.	Obtener el nombre de la empresa, el nombre del contacto y la fecha del pedido de todos los pedidos.
 
@@ -103,6 +114,7 @@ SELECT customers.company_name, customers.contact_name, orders.order_date
 FROM orders
 INNER JOIN customers 
 ON orders.Customer_id = customers.Customer_id;
+
 
 
 -- 11.	Obtener la identificación del pedido, el nombre del producto y el descuento de todos los detalles del pedido y productos.
@@ -113,7 +125,12 @@ JOIN Products
 ON order_details.product_id = products.product_id;
 
 
+
+
+
 -- LEFT JOIN
+
+
 
 -- 12.	Obtener el identificador del cliente, el nombre de la compañia, el identificador y la fecha de la orden de todas las ordines y aquellos clientes que hagan match.
 
@@ -127,7 +144,6 @@ ON Customers.customer_id = Orders.customer_id;
 SELECT employees.employee_id, employees.last_name, employees.territory_id, territories.territory_description
 FROM Employees
 INNER JOIN territories ON employees.territory_id = territories.territory_id;
-
 
 
 --  13.	Obtener el identificador del empleado, apellido, identificador de territorio y descripción del territorio de todos los empleados y aquellos que hagan match en territorios.
@@ -153,6 +169,9 @@ INNER JOIN customers
 ON orders.customer_id = customers.customer_id;
 
 
+
+
+
 --  RIGHT JOIN
 
 
@@ -166,6 +185,7 @@ RIGHT JOIN Orders
 ON Customers.Customer_ID = Orders.Customer_ID;
 
 
+
 --  16.	Obtener el nombre de la compañía, y la fecha de la orden de todas las ordines y aquellos transportistas que hagan mach. Solamente para aquellas órdenes del año 1996.
 
 
@@ -176,6 +196,9 @@ ON Customers.Customer_ID = Orders.Customer_ID
 RIGHT JOIN Shippers 
 ON customers.company_name = Shippers.company_name
 WHERE EXTRACT(YEAR FROM Orders.Order_Date) = 1996;
+
+
+
 
 
 -- FULL OUTER JOIN
@@ -224,6 +247,14 @@ FROM Suppliers;
 --  20. Obtener la lista de los nombres de todos los empleados y los nombres de los gerentes de departamento.
 
 
+select first_name  
+from employees 
+
+union
+
+select first_name 
+from employees 
+where employee_id = reports_to ;
 
 
 
@@ -317,7 +348,16 @@ HAVING SUM(Units_In_Stock) > 100;
 
 -- 27 Obtener el promedio de pedidos por cada compania y solo mostrar aquellas con un promedio de pedidos superior a 10
 
-
+select
+    c.company_name,
+    sum(o.order_id) / count(o.order_id) as avg_orders
+from
+    orders o
+    left join customers c on o.customer_id = c.customer_id
+group by
+    c.company_name
+having
+    sum(o.order_id) / count(o.order_id) > 10;
 
 
 
