@@ -24,3 +24,8 @@ Elercicio 3 - Obtener una lista de todos los títulos de contacto distintos:
 select distinct contact_title
 from customers;
 ```
+
+
+ORDER BY
+
+Ejercicio 4 - Obtener una lista de todos los clientes, ordenados por país:
