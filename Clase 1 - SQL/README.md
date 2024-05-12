@@ -26,6 +26,7 @@ from customers;
 ```
 
 
+
 ORDER BY
 
 Ejercicio 4 - Obtener una lista de todos los clientes, ordenados por país:
