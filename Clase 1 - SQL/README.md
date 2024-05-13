@@ -102,105 +102,134 @@ FROM Products;
 
 > “Si el precio unitario es NULL, la función COALESCE lo reemplaza con el valor 10 “
 
+INNER JOIN
+-
+>
 
-Ejercicio 10 - Insertar un nuevo cliente en la tabla región:
+Ejercicio 10 - Obtener el nombre de la empresa, el nombre del contacto y la fecha del pedido de todos los pedidos:
 
 ```sql
-insert into region(region_id, region_description )
-values ( 5,'south east' );
-
-select *
-from region; 
+SELECT customers.company_name, customers.contact_name, orders.order_date
+FROM orders
+INNER JOIN customers 
+ON orders.Customer_id = customers.Customer_id; 
 ```
 
 
-Ejercicio 11 - Insertar un nuevo cliente en la tabla región:
+Ejercicio 11 - Obtener la identificación del pedido, el nombre del producto y el descuento de todos los detalles del pedido y productos:
 
 ```sql
-insert into region(region_id, region_description )
-values ( 5,'south east' );
+SELECT order_details.order_id, Products.product_name, order_details.discount
+FROM Order_details
+JOIN Products 
+ON order_details.product_id = products.product_id; 
+```
 
-select *
-from region; 
+LEFT JOIN
+-
+>
+
+
+Ejercicio 12 - Obtener el identificador del cliente, el nombre de la compañia, el identificador y la fecha de la orden de todas las ordines y aquellos clientes que hagan match:
+
+```sql
+SELECT Customers.customer_id, Customers.company_name, orders.order_id, orders.order_date
+FROM Customers
+INNER JOIN Orders 
+ON Customers.customer_id = Orders.customer_id;
+
+SELECT employees.employee_id, employees.last_name, employees.territory_id, territories.territory_description
+FROM Employees
+INNER JOIN territories ON employees.territory_id = territories.territory_id; 
 ```
 
 
-Ejercicio 12 - Insertar un nuevo cliente en la tabla región:
+Ejercicio 13 - Obtener el identificador del empleado, apellido, identificador de territorio y descripción del territorio de todos los empleados y aquellos que hagan match en territorios:
 
 ```sql
-insert into region(region_id, region_description )
-values ( 5,'south east' );
-
-select *
-from region; 
+SELECT 
+    Employees.employee_id, 
+    Employees.Last_Name, 
+    Employee_Territories.territory_id, 
+    Territories.Territory_Description
+FROM Employees
+INNER JOIN  Employee_Territories 
+ON Employees.employee_id = Employee_Territories.employee_id
+INNER JOIN Territories 
+ON Employee_Territories.territory_id = Territories.territory_id; 
 ```
 
 
-Ejercicio 13 - Insertar un nuevo cliente en la tabla región:
+Ejercicio 14 - Obtener el identificador de la orden y el nombre de la empresa de todos las ordenes y aquellos que hagan match:
 
 ```sql
-insert into region(region_id, region_description )
-values ( 5,'south east' );
-
-select *
-from region; 
+SELECT orders.order_id, customers.company_name
+FROM orders
+INNER JOIN customers 
+ON orders.customer_id = customers.customer_id;
 ```
 
 
-Ejercicio 14 - Insertar un nuevo cliente en la tabla región:
+
+
+RIGHT JOIN
+-
+>
+>
+Ejercicio 15 - Obtener el identificador de la orden, y el nombre de la compañía de todas las ordenes y aquellos clientes que hagan match:
 
 ```sql
-insert into region(region_id, region_description )
-values ( 5,'south east' );
+SELECT orders.order_id, customers.company_name
+FROM orders
+INNER JOIN customers 
+ON orders.customer_id = customers.customer_id; 
+```
 
-select *
-from region; 
+Ejercicio 16 - Obtener el nombre de la compañía, y la fecha de la orden de todas las ordines y aquellos transportistas que hagan mach. Solamente para aquellas órdenes del año 1996:
+
+```sql
+SELECT Customers.Company_Name, Orders.Order_Date
+FROM Customers
+RIGHT JOIN Orders 
+ON Customers.Customer_ID = Orders.Customer_ID
+RIGHT JOIN Shippers 
+ON customers.company_name = Shippers.company_name
+WHERE EXTRACT(YEAR FROM Orders.Order_Date) = 1996; 
+```
+
+FULL OUTER JOIN
+-
+>
+
+Ejercicio 17 - Obtener nombre y apellido del empleados y el identificador de territorio, de todos los empleados y aquellos que hagan match o no de employee_territories:
+
+```sql
+SELECT 
+    Employees.First_Name,
+    Employees.Last_Name,
+    Employee_Territories.Territory_ID
+FROM Employees
+FULL OUTER JOIN Employee_Territories 
+ON Employees.Employee_ID = Employee_Territories.Employee_ID; 
 ```
 
 
-Ejercicio 15 - Insertar un nuevo cliente en la tabla región:
+Ejercicio 18 - Obtener el identificador de la orden, precio unitario, cantidad y total de todas las órdenes y aquellas órdenes detalles que hagan match o no:
 
 ```sql
-insert into region(region_id, region_description )
-values ( 5,'south east' );
-
-select *
-from region; 
+SELECT 
+    Orders.Order_ID,
+    Order_Details.Unit_Price,
+    Order_Details.Quantity,
+    (Order_Details.Unit_Price * Order_Details.Quantity) AS Total
+FROM Orders
+FULL OUTER JOIN Order_Details 
+ON Orders.Order_ID = Order_Details.Order_ID; 
 ```
 
-
-Ejercicio 16 - Insertar un nuevo cliente en la tabla región:
-
-```sql
-insert into region(region_id, region_description )
-values ( 5,'south east' );
-
-select *
-from region; 
-```
-
-
-Ejercicio 17 - Insertar un nuevo cliente en la tabla región:
-
-```sql
-insert into region(region_id, region_description )
-values ( 5,'south east' );
-
-select *
-from region; 
-```
-
-
-Ejercicio 18 - Insertar un nuevo cliente en la tabla región:
-
-```sql
-insert into region(region_id, region_description )
-values ( 5,'south east' );
-
-select *
-from region; 
-```
-
+UNION
+-
+>
 
 Ejercicio 19 - Insertar un nuevo cliente en la tabla región:
 
