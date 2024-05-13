@@ -1,10 +1,10 @@
 HDFS - Haddop File System
 -
-DOCKER
+
+
+PRACTICA INGEST
 -
 
-Bajar Imagen:
+1. Ingresar a la consola Hadoop y luego cambiarse de usuario a Hadoop:
 
-```docker
-docker pull fedepineyro/edvai_ubuntu:v6
-```
+!("D:\CURSOS\EDVai\Bootcamp de Data Engineering - Creando el pipeline de datos\2 - Módulo A - Conceptos de Data Engineering\Clase_3_Ejercicio_Ingest\1.png")
