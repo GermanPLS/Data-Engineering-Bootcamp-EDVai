@@ -7,18 +7,12 @@ PRACTICA INGEST
 
 1. Ingresar a la consola Hadoop y luego cambiarse de usuario a Hadoop:
 
-```cmd
-C:\Users\Usuario>docker exec -it edvai_hadoop bash
-root@a12c3f03e3c1:/# su hadoop
-```
-![imagen1](./Clase 3_Ingest/1.png)
+
+![[imagen1](./Clase 3_Ingest/1.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/5775e9b3fa32ba80675a5aeb87853f53ac3a1f98/Clase%203_Ingest/1.png)
 
 2. Ingresar al directorio /home/hadoops/scripts:
 
-```cmd
-hadoop@a12c3f03e3c1:/$ cd /home/hadoop/scripts/
-hadoop@a12c3f03e3c1:~/scripts$
-```
+
 
 3.  Crear un script llamado landing.sh que baje el archivo
 https://github.com/fpineyro/homework-0/blob/master/starwars.csv al
