@@ -87,4 +87,5 @@ chmod 777 landing.sh
 ```sh
 hdfs dfs -ls /ingest
 ```
+![[imagen5](./Clase 3_Ingest/hdfs starwars.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/f6be8ba8fafc77363f97845cb05ac29ecb7340cb/Clase%203_Ingest/hdfs%20starwars.png)
 
