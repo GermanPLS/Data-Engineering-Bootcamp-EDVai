@@ -12,7 +12,7 @@ PRACTICA INGEST
 
 2. Ingresar al directorio /home/hadoops/scripts:
 
-
+![[imagen2](./Clase 3_Ingest/22.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/ada5ed35603b1481fb8c8b130b91852384f8948a/Clase%203_Ingest/22.png)
 
 3.  Crear un script llamado landing.sh que baje el archivo
 https://github.com/fpineyro/homework-0/blob/master/starwars.csv al
