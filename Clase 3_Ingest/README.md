@@ -11,6 +11,7 @@ PRACTICA INGEST
 C:\Users\Usuario>docker exec -it edvai_hadoop bash
 root@a12c3f03e3c1:/# su hadoop
 ```
+![imagen1](./Clase 3_Ingest/1.png)
 
 2. Ingresar al directorio /home/hadoops/scripts:
 
