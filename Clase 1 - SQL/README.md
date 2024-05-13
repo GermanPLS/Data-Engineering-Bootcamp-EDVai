@@ -1,8 +1,11 @@
 SQL -->  STRUCTURED QUERY LANGUAGE = Lenguaje de Consulta Estructurado
+---
 
 Ejercicios de SQL
+--
 
 Select Distint - Consulta para que devuelva valores unicos (NO repetidos).
+-
 
 Ejercicio 1 -	Obtener una lista de todas las categorías distintas:
 
