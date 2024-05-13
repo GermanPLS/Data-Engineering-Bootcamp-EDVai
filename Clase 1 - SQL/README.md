@@ -33,7 +33,8 @@ from customers;
 
 
 
-ORDER BY 
+ORDER BY
+-
 >es para ordenar los resultados de manera Ascendente o Descentente.
 
 Ejercicio 4 - Obtener una lista de todos los clientes, ordenados por país:
@@ -56,6 +57,7 @@ ORDER BY employee_id, order_date;
 
 
 INSERT INTO 
+-
 
 >Es utilizado para insertar nuevos registros en una tabla.
 
@@ -81,6 +83,7 @@ from region;
 
 
 NULL / COALESCE 
+-
 
 >Es utilizado para seleccionar registros si un campo especifico es nulo.
 
