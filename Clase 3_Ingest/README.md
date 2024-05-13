@@ -26,7 +26,7 @@ echo --> Movemos los archivos a HDFS, con PUT
 hdfs dfs -put /home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
 hdfs dfs -ls /ingest
 ```
-
+![[imagen4](./Clase 3_Ingest/hadoop ingest.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/353014f8ef46b72815fcd103fef4267b3f126320/Clase%203_Ingest/hadoop%20ingest.png)
 
 PRACTICA INGEST
 -
@@ -40,10 +40,51 @@ PRACTICA INGEST
 
 ![[imagen2](./Clase 3_Ingest/22.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/ada5ed35603b1481fb8c8b130b91852384f8948a/Clase%203_Ingest/22.png)
 
-3.  Crear un script llamado landing.sh que baje el archivo
-https://github.com/fpineyro/homework-0/blob/master/starwars.csv al
-directorio temporal /home/hadoop/landing y luego lo envíe al
-directorio de Hadoop file system (HDFS) /ingest. Antes de finalizar el
-script que borre el archivo starwars.csv del directorio temporal
-/home/hadoop/landing:
+3.  Crear un script llamado landing.sh que baje el archivo https://github.com/fpineyro/homework-0/blob/master/starwars.csv al
+directorio temporal /home/hadoop/landing y luego lo envíe al directorio de Hadoop file system (HDFS) /ingest. Antes de finalizar el
+script que borre el archivo starwars.csv del directorio temporal /home/hadoop/landing:
+
+```sh
+docker exec -it edvai_hadoop bash
+
+su hadoop
+ls
+
+cd /home/hadoop/
+ls
+
+cd scripts
+ls -1
+
+nano landing.sh
+
+rm -f /home/hadoop/landing/*
+
+wget -P /home/hadoop/landing https://github.com/fpineyro/homework-0/blob/master/starwars.csv
+
+/home/hadoop/hadoop/bin/hdfs dfs -rm -f /ingest/*
+
+/home/hadoop/hadoop/bin/hdfs dfs -put /home/hadoop/landing/* /ingest
+
+ls
+
+```
+
+4. Cambiar permisos para que el script pueda ser ejecutado
+   
+```sh
+chmod 777 landing.sh
+```
+
+5. Ejecutar el script para que baje el archivo starwars.csv de Github y lo envíe al directorio /ingest de HDFS
+
+```sh
+./landing.sh
+```
+
+6. Verificar que el archivo se encuentre en el directorio /ingest de HDFS
+
+```sh
+hdfs dfs -ls /ingest
+```
 
