@@ -1,6 +1,11 @@
 HDFS - Haddop File System
 -
+Ingest con Scripts
+-
 
+
+> Podemos utilizar comandos de linux para hacer ingest de archivos.
+> 
 
 PRACTICA INGEST
 -
