@@ -1,4 +1,4 @@
-HDFS - Haddop File System
+HDFS - Hadoop File System
 -
 Ingest con Scripts
 -
