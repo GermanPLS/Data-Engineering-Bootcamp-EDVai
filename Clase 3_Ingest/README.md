@@ -15,14 +15,16 @@ ls
 cd /home/hadoop/
 ls
 
-echo --> Obtenemos los archivos con WGET
+# Obtenemos los archivos con WGET
 
 wget -P /home/hadoop/landing/ https://dataengineerpublic.blob.core.windows.net/data-engineer/yellow_tripdata_2021-01.csv
 cd landing/
 ls
-echo --> Observo si se bajo el archivo en la area de landing.
 
-echo --> Movemos los archivos a HDFS, con PUT
+# Observo si se bajo el archivo en la area de landing.
+
+#  Movemos los archivos a HDFS, con PUT
+
 hdfs dfs -put /home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
 hdfs dfs -ls /ingest
 ```
@@ -56,6 +58,8 @@ ls
 cd scripts
 ls -1
 
+# creo el script landing.sh
+
 nano landing.sh
 
 rm -f /home/hadoop/landing/*
@@ -65,6 +69,8 @@ wget -P /home/hadoop/landing https://github.com/fpineyro/homework-0/blob/master/
 /home/hadoop/hadoop/bin/hdfs dfs -rm -f /ingest/*
 
 /home/hadoop/hadoop/bin/hdfs dfs -put /home/hadoop/landing/* /ingest
+
+# para salir ctrl+o / ctrl+x
 
 ls
 
