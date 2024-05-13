@@ -7,5 +7,22 @@ PRACTICA INGEST
 
 1. Ingresar a la consola Hadoop y luego cambiarse de usuario a Hadoop:
 
-!("D:\CURSOS\EDVai\Bootcamp de Data Engineering - Creando el pipeline de datos\2 - Módulo A - Conceptos de Data Engineering\Clase_3_Ejercicio_Ingest\1.png")
-!(https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/issues/3#issue-2292651027)
+```cmd
+C:\Users\Usuario>docker exec -it edvai_hadoop bash
+root@a12c3f03e3c1:/# su hadoop
+```
+
+2. Ingresar al directorio /home/hadoops/scripts:
+
+```cmd
+hadoop@a12c3f03e3c1:/$ cd /home/hadoop/scripts/
+hadoop@a12c3f03e3c1:~/scripts$
+```
+
+3.  Crear un script llamado landing.sh que baje el archivo
+https://github.com/fpineyro/homework-0/blob/master/starwars.csv al
+directorio temporal /home/hadoop/landing y luego lo envíe al
+directorio de Hadoop file system (HDFS) /ingest. Antes de finalizar el
+script que borre el archivo starwars.csv del directorio temporal
+/home/hadoop/landing:
+
