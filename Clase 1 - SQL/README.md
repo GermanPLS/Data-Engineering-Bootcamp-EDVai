@@ -4,7 +4,7 @@ SQL -->  STRUCTURED QUERY LANGUAGE = Lenguaje de Consulta Estructurado
 Ejercicios de SQL
 --
 
-Select Distint - 
+Select Distint 
 -
 >Consulta para que devuelva valores unicos (NO repetidos).
 
@@ -33,7 +33,8 @@ from customers;
 
 
 
-ORDER BY -  es para ordenar los resultados de manera Ascendente o Descentente.
+ORDER BY 
+>es para ordenar los resultados de manera Ascendente o Descentente.
 
 Ejercicio 4 - Obtener una lista de todos los clientes, ordenados por país:
 
@@ -54,7 +55,9 @@ ORDER BY employee_id, order_date;
 
 
 
-INSERT INTO - Es utilizado para insertar nuevos registros en una tabla.
+INSERT INTO 
+
+>Es utilizado para insertar nuevos registros en una tabla.
 
 Ejercicio 6 - Insertar un Nuevo cliente en la tabla Customers:
 
@@ -77,7 +80,9 @@ from region;
 ```
 
 
-NULL / COALESCE -  Es utilizado para seleccionar registros si un campo especifico es nulo.
+NULL / COALESCE 
+
+>Es utilizado para seleccionar registros si un campo especifico es nulo.
 
 Ejercicio 8 - Obtener todos los clientes de la tabla Customers donde el campo region es NULL:
 
