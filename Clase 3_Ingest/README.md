@@ -2,10 +2,31 @@ HDFS - Haddop File System
 -
 Ingest con Scripts
 -
-
+![[imagen3](./Clase 3_Ingest/ingest csripts.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/7d45e221cb5ab5750f711526a182a5e8de1388fd/Clase%203_Ingest/ingest%20csripts.png)
 
 > Podemos utilizar comandos de linux para hacer ingest de archivos.
-> 
+
+```sh
+docker exec -it edvai_hadoop bash
+
+su hadoop
+ls
+
+cd /home/hadoop/
+ls
+
+echo --> Obtenemos los archivos con WGET
+
+wget -P /home/hadoop/landing/ https://dataengineerpublic.blob.core.windows.net/data-engineer/yellow_tripdata_2021-01.csv
+cd landing/
+ls
+echo --> Observo si se bajo el archivo en la area de landing.
+
+echo --> Movemos los archivos a HDFS, con PUT
+hdfs dfs -put /home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
+hdfs dfs -ls /ingest
+```
+
 
 PRACTICA INGEST
 -
