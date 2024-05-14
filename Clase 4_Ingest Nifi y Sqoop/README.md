@@ -97,5 +97,7 @@ sqoop import \
 
 ![[imagen6](./Clase 4_Ingest Nifi y Sqoop/e41.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/e9c335e65b6e4f87aec927004a142543caf3be0e/Clase%204_Ingest%20Nifi%20y%20Sqoop/e41.png)
 
+En pyspark:
 
+![[imagen8](./Clase 4_Ingest Nifi y Sqoop/e41pysprak.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/3110c867f60b61b3ff15b4384f43e458b5f58467/Clase%204_Ingest%20Nifi%20y%20Sqoop/e41pysprak.png)
 
