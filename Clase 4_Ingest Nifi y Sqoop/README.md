@@ -1,7 +1,7 @@
 # INGEST con NIFI (niagara files) y SQOOP (sql+hadoop)
 
 
-## sqoop
+## SQOOP
 
 Sqoop es una aplicación con interfaz de línea de comando para transferir datos entre bases de datos relacionales y Hadoop.(Ingest)
 
@@ -100,4 +100,9 @@ sqoop import \
 En pyspark:
 
 ![[imagen8](./Clase 4_Ingest Nifi y Sqoop/e41pysprak.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/3110c867f60b61b3ff15b4384f43e458b5f58467/Clase%204_Ingest%20Nifi%20y%20Sqoop/e41pysprak.png)
+
+
+
+
+## NIFI
 
