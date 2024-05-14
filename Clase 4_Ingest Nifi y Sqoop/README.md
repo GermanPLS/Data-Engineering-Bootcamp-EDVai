@@ -48,9 +48,26 @@ sqoop import \
 --delete-target-dir
 ```
 
+Una vez que hayamos hecho el import nos quedará un archivo parquet en la
+siguiente ruta: /sqoop/ingest
+
 ![[imagen4](./Clase 4_Ingest Nifi y Sqoop/e3.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/d3bef356fb838f7574e5aa6703bd39e724be83fa/Clase%204_Ingest%20Nifi%20y%20Sqoop/e3.png)
 
+Por lo que luego ya podemos ingresar a spark para comenzar a crear un dataframe
+en base a esa data.
 
+```sh
+pyspark
+
+df = spark.read.parquet("/sqoop/ingest/*.parquet")
+
+df.printSchema()
+
+df.show(5)
+
+```
+
+![[imagen7](./Clase 4_Ingest Nifi y Sqoop/e3pyspark.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/f300160e993fb22d70d867b0bc45fd6636df27f4/Clase%204_Ingest%20Nifi%20y%20Sqoop/e3pyspark.png)
 
 Ejercicio 4 -  Importar un archivo .parquet que contenga solo los productos con mas 20 unidades en
 stock, de la tabla Products . Luego ingestar el archivo a HDFS (carpeta ingest)
