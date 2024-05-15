@@ -80,4 +80,5 @@ select tpep_pickup_datetime, passenger_count, trip_distance_km from tripdata_tab
 
 ```
 
+![[imagen6](./Clase 7_ Load (HIVE)/6 hive.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/0d5664ad0ef2e2ce1cb56c9d63f3f91ce81f1c70/Clase%207_%20Load%20(HIVE)/6%20hive.png)
 
