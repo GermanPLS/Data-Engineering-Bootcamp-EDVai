@@ -314,6 +314,9 @@ drwxr-xr-x   - hadoop supergroup          0 2024-05-05 10:12 /table
 drwxrwxr-x   - hadoop supergroup          0 2022-05-02 20:46 /tmp
 drwxr-xr-x   - hadoop supergroup          0 2022-01-23 13:15 /user
 
+# limpio o borro lo que hay en la carpeta NiFi
+
+hdfs dfs -rm -f /nifi/*
 ```
 
 ```
@@ -321,6 +324,32 @@ drwxr-xr-x   - hadoop supergroup          0 2022-01-23 13:15 /user
 
 hdfs dfs -mkdir /nifi
 hdfs dfs -chmod 777 /nifi
+```
+
+Shell NiFi
+```sh
+# elimino el archivo de la carpeta bucket
+/bucket$ rm starwars.csv
+nifi@05c97bb3bfb9:~/bucket$ ls
+nifi@05c97bb3bfb9:~/bucket$
+```
+
+Interfaz Grafica
 
 
+
+Shell NiFi
+
+```sh
+# Resultado: 
+
+nifi@05c97bb3bfb9:~$ pwd
+/home/nifi
+nifi@05c97bb3bfb9:~$ ls
+bucket  hadoop  ingest
+nifi@05c97bb3bfb9:~$ cd bucket
+nifi@05c97bb3bfb9:~/bucket$ ls
+nifi@05c97bb3bfb9:~/bucket$ ls
+ingest.sh  starwars.csv
+nifi@05c97bb3bfb9:~/bucket$
 ```
