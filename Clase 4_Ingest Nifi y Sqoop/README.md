@@ -53,6 +53,10 @@ siguiente ruta: /sqoop/ingest
 
 ![[imagen4](./Clase 4_Ingest Nifi y Sqoop/e3.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/d3bef356fb838f7574e5aa6703bd39e724be83fa/Clase%204_Ingest%20Nifi%20y%20Sqoop/e3.png)
 
+
+• En Pyspark
+-
+
 Por lo que luego ya podemos ingresar a spark para comenzar a crear un dataframe
 en base a esa data.
 
@@ -97,7 +101,8 @@ sqoop import \
 
 ![[imagen6](./Clase 4_Ingest Nifi y Sqoop/e41.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/e9c335e65b6e4f87aec927004a142543caf3be0e/Clase%204_Ingest%20Nifi%20y%20Sqoop/e41.png)
 
-En pyspark:
+• En pyspark:
+-
 
 ![[imagen8](./Clase 4_Ingest Nifi y Sqoop/e41pysprak.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/3110c867f60b61b3ff15b4384f43e458b5f58467/Clase%204_Ingest%20Nifi%20y%20Sqoop/e41pysprak.png)
 
@@ -111,6 +116,8 @@ shell NIFI
 ```bash
 docker ps
 docker start nifi
+docker exec -it nifi bash
+
 cd /home/nifi/
 
 creamos 3 carpetas:
@@ -130,7 +137,8 @@ ls
 
 cd hadoop
 
-# Desde la consola de nifi, es necesario agregar dos archivos de configuración llamados core-site.xml y hdfs-site.xml al directorio /home/nifi/hadoop.
+# Desde la consola de nifi, es necesario agregar dos archivos de configuración llamados core-site.xml
+y hdfs-site.xml al directorio /home/nifi/hadoop.
 
 cat > core-site.xml
 
@@ -217,7 +225,8 @@ shell HADOOP
 hdfs dfs -ls /
 hdfs dfs -mkdir /nifi
 
-# Para que Nifi pueda ingestar el archivo a HDFS, debe asignársele el permiso desde laconsola de Hadoop con el comando hdfs dfs -chmod 777 /nifi
+# Para que Nifi pueda ingestar el archivo a HDFS, debe asignársele el permiso desde la consola de Hadoop
+con el comando hdfs dfs -chmod 777 /nifi ( leer, escribir y ejecutar).
 
 hdfs dfs -chmod 777 /nifi
 
@@ -233,3 +242,11 @@ Ejercicio 1 - En el shell de Nifi, crear un script .sh que descargue el archivo 
 
 
 
+
+Ejercicio 2 - Usando procesos en Nifi:
+
+a) tomar el archivo starwars.csv desde el directorio /home/nifi/ingest.
+b) Mover el archivo starwars.csv desde el directorio anterior, a /home/nifi/bucket
+(crear el directorio si es necesario)
+c) Tomar nuevamente el archivo, ahora desde /home/nifi/bucket
+d) Ingestarlo en HDFS/nifi (si es necesario, crear el directorio con hdfs dfs -mkdir/nifi )
