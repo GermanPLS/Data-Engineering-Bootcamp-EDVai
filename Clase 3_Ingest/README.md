@@ -33,13 +33,20 @@ ls
 
 wget -P /home/hadoop/landing/ https://dataengineerpublic.blob.core.windows.net/data-engineer/yellow_tripdata_2021-01.csv
 cd landing/
-ls
+
+
+# wget es una utilidad de línea de comandos que se usa para descargar archivos de la web.
+# -P directorio: Guarda los archivos descargados en el directorio especificado.
 
 # Observo si se bajo el archivo en la area de landing.
 
+ls
+
 #  Movemos los archivos a HDFS, con PUT
 
-hdfs dfs -put /home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
+
+
+/home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
 hdfs dfs -ls /ingest
 ```
 ![[imagen4](./Clase 3_Ingest/hadoop ingest.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/353014f8ef46b72815fcd103fef4267b3f126320/Clase%203_Ingest/hadoop%20ingest.png)
@@ -72,10 +79,11 @@ ls
 cd scripts
 ls -1
 
-# creo el script landing.sh
+# se crea el script llamado landing.sh. Usamos un editor de texto de Linux: nano
 
 nano landing.sh
 
+# elimino todos los archivos dentro del directorio landing
 rm -f /home/hadoop/landing/*
 
 wget -P /home/hadoop/landing https://github.com/fpineyro/homework-0/blob/master/starwars.csv
@@ -84,7 +92,8 @@ wget -P /home/hadoop/landing https://github.com/fpineyro/homework-0/blob/master/
 
 /home/hadoop/hadoop/bin/hdfs dfs -put /home/hadoop/landing/* /ingest
 
-# para salir ctrl+o / ctrl+x
+# para --> guardar cambios presiona Ctrl + O, luego Enter.
+# para --> salir presiona Ctrl + X.
 
 ls
 
@@ -93,7 +102,7 @@ ls
 4. Cambiar permisos para que el script pueda ser ejecutado
    
 ```sh
-chmod 777 landing.sh
+hdfs dfs -chmod 777 landing.sh
 ```
 
 5. Ejecutar el script para que baje el archivo starwars.csv de Github y lo envíe al directorio /ingest de HDFS
