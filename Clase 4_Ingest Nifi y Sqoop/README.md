@@ -240,8 +240,55 @@ hdfs dfs -ls /nifi
 Ejercicio 1 - En el shell de Nifi, crear un script .sh que descargue el archivo starwars.csv al directorio
 /home/nifi/ingest (crearlo si es necesario). Ejecutarlo con ./home/nifi/ingest/ingest.sh
 
+Shell NiFi
+```sh
+cat > ingest.sh
+rm -f /home/nifi/ingest/starwars.csv
+wget -P /home/nifi/ingest https://github.com/fpineyro/homework-0/blob/master/starwars.csv
+# (Ctrl para salir)
 
+# veo los permisos del archivo ingest.sh
+ls -l ingest.sh
 
+# resultado:
+#  -rw-r--r-- 1 nifi nifi 127 May 15 12:44 ingest.sh
+
+# necesito añadir permisos de ejecucion.Para hacer que el propietario (usuario nifi) pueda ejecutar el archivo:
+
+chmod u+x ingest.sh
+
+ls -l ingest.sh
+
+# resultado:
+# -rwxr--r-- 1 nifi nifi 127 May 15 12:44 ingest.sh
+
+cd /
+./home/nifi/ingest/ingest.sh
+
+# resultado:
+
+nifi@05c97bb3bfb9:/$ cd /home/nifi/ingest/
+nifi@05c97bb3bfb9:~/ingest$ ls
+ingest.sh  starwars.csv
+
+```
+```
+Resumen de los permisos:
+
+Propietario (nifi).
+Grupo (nifi).
+Otros usuarios.
+
+Dar permisos de ejecución al propietario: chmod u+x ingest.sh
+Dar permisos de ejecución al propietario, grupo y otros: ls -l ingest.sh
+
+para habilitar todos los permisos:
+
+nifi@05c97bb3bfb9:~/ingest$ chmod a+rwx ingest.sh
+nifi@05c97bb3bfb9:~/ingest$ ls -l ingest.sh
+-rwxrwxrwx 1 nifi nifi 127 May 15 12:44 ingest.sh
+
+```
 
 Ejercicio 2 - Usando procesos en Nifi:
 
@@ -250,3 +297,30 @@ b) Mover el archivo starwars.csv desde el directorio anterior, a /home/nifi/buck
 (crear el directorio si es necesario)
 c) Tomar nuevamente el archivo, ahora desde /home/nifi/bucket
 d) Ingestarlo en HDFS/nifi (si es necesario, crear el directorio con hdfs dfs -mkdir/nifi )
+
+Shell Hadoop
+```sh
+hdfs dfs -ls /
+
+# veo que permisos tiene la carpeta nifi
+# Resulto:
+Found 8 items
+drwxr-xr-x   - hadoop supergroup          0 2024-05-13 18:02 /ingest
+drwxr-xr-x   - hadoop supergroup          0 2022-04-26 19:51 /inputs
+drwxr-xr-x   - hadoop supergroup          0 2022-01-22 21:35 /logs
+drwxrwxrwx   - hadoop supergroup          0 2024-05-15 09:17 /nifi
+drwxr-xr-x   - hadoop supergroup          0 2024-05-14 09:14 /sqoop
+drwxr-xr-x   - hadoop supergroup          0 2024-05-05 10:12 /table
+drwxrwxr-x   - hadoop supergroup          0 2022-05-02 20:46 /tmp
+drwxr-xr-x   - hadoop supergroup          0 2022-01-23 13:15 /user
+
+```
+
+```
+# si los permisos no estan habilitados o falta crear la carpeta NiFi en HDFS :
+
+hdfs dfs -mkdir /nifi
+hdfs dfs -chmod 777 /nifi
+
+
+```
