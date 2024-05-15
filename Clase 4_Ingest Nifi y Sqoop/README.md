@@ -138,7 +138,7 @@ ls
 cd hadoop
 
 # Desde la consola de nifi, es necesario agregar dos archivos de configuración llamados core-site.xml
-y hdfs-site.xml al directorio /home/nifi/hadoop.
+# y hdfs-site.xml al directorio /home/nifi/hadoop.
 
 cat > core-site.xml
 
