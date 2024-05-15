@@ -1,4 +1,18 @@
-HDFS - Hadoop File System
+# INGEST
+
+Ingestion es el proceso de ingresar informaciona un proyecto de Big Data.
+Lo podemos hacer mediante 3 tipos de ingest:
+
+      • Bach de datos (por lotes).
+   
+      • Streaming data ( tiempo real).
+   
+      • CDC (Change Data Capture).
+
+   
+
+
+## HDFS - Hadoop File System
 -
 Ingest con Scripts
 -
