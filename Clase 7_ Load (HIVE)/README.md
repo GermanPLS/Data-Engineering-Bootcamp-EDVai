@@ -44,9 +44,7 @@ use tripdata;
 ```
 
 ```sh
-show databases;
-create database tripdata;
-use tripdata;
+show tables;
 ```
 
 Vamos a crear la tabla donde vamos a insertar nuestros dataframes:
