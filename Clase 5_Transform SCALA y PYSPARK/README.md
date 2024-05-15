@@ -47,7 +47,7 @@ df.createOrReplaceTempView("tripdata_vista")
 new_df = spark.sql("select tpep_pickup_datetime, passenger_count, trip_distance from tripdata_vista where passenger_count > 1 and trip_distance between 1 and 10")
 new_df.show(5)
 ```
-
+![[imagen4](./Clase 5_Transform SCALA y PYSPARK/4  new_df.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/9f4aa739e10c6b5c8a7179f8a8e024e691f3fedc/Clase%205_Transform%20SCALA%20y%20PYSPARK/4%20%20new_df.png)
 
  Pasamos/convertimos la distancia de milla a Kmts:
 
@@ -55,7 +55,9 @@ new_df.show(5)
 new_df.createOrReplaceTempView("vista_filtrada")
 df_final = spark.sql("select tpep_pickup_datetime, passenger_count, trip_distance *1.6 as trip_distance_km from vista_filtrada")
 df_final.show(5)
+
+# Para salir de la consola PYSPARK -->  exit()
 ```
 
-
+![[imagen5](./Clase 5_Transform SCALA y PYSPARK/5 df_final.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/9f4aa739e10c6b5c8a7179f8a8e024e691f3fedc/Clase%205_Transform%20SCALA%20y%20PYSPARK/5%20df_final.png)
 
