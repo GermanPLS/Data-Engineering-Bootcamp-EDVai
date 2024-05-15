@@ -1,4 +1,4 @@
-# TRANSFORM
+# TRANSFORM  ( con "vistas" de SQL)
 
 Es el proceso de convertir, limpiar y estructurar datos en un formato utilizable que se pueda analizarpara respaldar los procesos de toma de decisiones.
 
