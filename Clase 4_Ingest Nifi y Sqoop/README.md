@@ -111,6 +111,8 @@ sqoop import \
 
 ## NIFI
 
+![[imagen9](./Clase 4_Ingest Nifi y Sqoop/ingest nifi.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/3abceed99ee5d8789a2a34a47a4533597520cd11/Clase%204_Ingest%20Nifi%20y%20Sqoop/ingest%20nifi.png)
+
 shell NIFI
 
 ```bash
@@ -336,7 +338,7 @@ nifi@05c97bb3bfb9:~/bucket$
 
 Interfaz Grafica
 
-
+![[imagen10](./Clase 4_Ingest Nifi y Sqoop/ingest Interfaz_nifi.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/3abceed99ee5d8789a2a34a47a4533597520cd11/Clase%204_Ingest%20Nifi%20y%20Sqoop/ingest%20Interfaz_nifi.png)
 
 Shell NiFi
 
@@ -353,3 +355,5 @@ nifi@05c97bb3bfb9:~/bucket$ ls
 ingest.sh  starwars.csv
 nifi@05c97bb3bfb9:~/bucket$
 ```
+![[imagen11](./Clase 4_Ingest Nifi y Sqoop/hdfs nifi.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/3abceed99ee5d8789a2a34a47a4533597520cd11/Clase%204_Ingest%20Nifi%20y%20Sqoop/hdfs%20nifi.png)
+
