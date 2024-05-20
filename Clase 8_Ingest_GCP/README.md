@@ -33,31 +33,12 @@ En GCP hay varias maneras de hacer Ingest de datos, pero estas son las 4 mas imp
 
 
 
-Toda la informacion dentro GCP esta encriptada, ya sea informacion en transito o almanecada (es un ambiente seguro).
-
-
-
-OLTP --> ES MAS INFORMACION TRANSACCIONAL, ES MAS PARA SISTEMAS, PARA OPERACIONES
-
-        - NORMALIZADA
-
-OLAP --> SON ANALITICAS, PARA INFORMACION
-        - DESNORMALIZADAS
-
-
-EVITAR ES TRATAR HACER JOIN DENTRO DEL DW, ES UNA OPERACION SUPER COSTOSA.
-
-
 # Practica Ingest GCP
 
 
 1. Crear un Bucket Regional standard en Finlandia llamado demo-bucket-edva.
 
-        - Google Cloud Storage
-            --> Buckets => Crear
 
-
-BUCKET: es un contenedor de Objetos. Un Objeto es un archivo, entonces un Bucket(contenedor) es para guardar onjetos,como una carpeta raiz que almacena todos tus archivos.
 
 2. Hacer ingest con la herramienta CLI Gsutil de 5 archivos csv en el bucket
 data-bucket-demo-1 (mostrar mediante un print screen esta tarea).
