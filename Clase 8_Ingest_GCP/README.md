@@ -43,7 +43,38 @@ En GCP hay varias maneras de hacer Ingest de datos, pero estas son las 4 mas imp
 2. Hacer ingest con la herramienta CLI Gsutil de 5 archivos csv en el bucket
 data-bucket-demo-1 (mostrar mediante un print screen esta tarea).
 
+creo un nuevo bucket en GCS con el nombre data-bucket-demo-edvai-14 y subo archivos .csv desde mi disco local por medio de Google cloud CLI o CLI/SDK.
 
+creo un nuevo bucket en GCS y subo archivos .csv desde mi disco local por medio de Google cloud CLI o CLI/SDK:
+
+Abro --> Google Cloud SDK Shell
+
+
+```sh
+gsutil help
+
+gsutil cp D:/PYTHON/datasets/wine_reviews.csv gs://data-bucket-demo-edvai-14/
+
+gsutil cp D:/PYTHON/datasets/train_essays_7_prompts_v2.csv gs://data-bucket-demo-edvai-14/
+
+gsutil cp D:/PYTHON/datasets/resultado-de-encuestas-2016.csv gs://data-bucket-demo-edvai-14/
+
+gsutil cp D:/PYTHON/datasets/weather gs://data-bucket-demo-edvai-14/
+
+```
+
+
+
+
+
+
+ gsutil cp D:/PYTHON/datasets/train_essays_7_prompts_v2.csv gs://data-bucket-demo-edvai-14/
+
+
+gsutil cp D:/PYTHON/datasets/resultado-de-encuestas-2016.csv gs://data-bucket-demo-edvai-14/
+
+
+gsutil cp D:/PYTHON/datasets/weather gs://data-bucket-demo-edvai-14/
 
 3. Utilizar el servicio de storage transfer para crear un job que copie los archivos
 que se encuentran en data-bucket-demo-1 a demo-bucket-edvai.
