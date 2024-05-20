@@ -38,7 +38,7 @@ En GCP hay varias maneras de hacer Ingest de datos, pero estas son las 4 mas imp
 
 1. Crear un Bucket Regional standard en Finlandia llamado demo-bucket-edva.
 
-
+![[imagen2](./Clase 8_Ingest_GCP/e1 gcp.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/8f89bb40f44451fc40268f2069bb4d0c1430aabe/Clase%208_Ingest_GCP/e1%20gcp.png)
 
 2. Hacer ingest con la herramienta CLI Gsutil de 5 archivos csv en el bucket
 data-bucket-demo-1 (mostrar mediante un print screen esta tarea).
