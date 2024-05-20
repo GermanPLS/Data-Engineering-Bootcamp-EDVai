@@ -68,13 +68,10 @@ gsutil cp D:/PYTHON/datasets/weather gs://data-bucket-demo-edvai-14/
 
 
 
- gsutil cp D:/PYTHON/datasets/train_essays_7_prompts_v2.csv gs://data-bucket-demo-edvai-14/
-
-
-gsutil cp D:/PYTHON/datasets/resultado-de-encuestas-2016.csv gs://data-bucket-demo-edvai-14/
-
-
-gsutil cp D:/PYTHON/datasets/weather gs://data-bucket-demo-edvai-14/
 
 3. Utilizar el servicio de storage transfer para crear un job que copie los archivos
 que se encuentran en data-bucket-demo-1 a demo-bucket-edvai.
+
+- Vamos a Transferir los archivos del Bucket con el nombre data-bucket-demo-edvai-14 al Bucket llamado demo-bucket-edvai-00.
+  
+![[imagen4](./Clase 8_Ingest_GCP/e3 gcp.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/7f64b49d62c72ead1f3f84722c327a45cd90c4c8/Clase%208_Ingest_GCP/e3%20gcp.png)
