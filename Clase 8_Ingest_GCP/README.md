@@ -63,7 +63,7 @@ gsutil cp D:/PYTHON/datasets/weather gs://data-bucket-demo-edvai-14/
 
 ```
 
-
+![[imagen3](./Clase 8_Ingest_GCP/e2 gcp.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/0f74b0ee4b0e2bf6bab08c12f19d3bd9bf8fe9a6/Clase%208_Ingest_GCP/e2%20gcp.png)
 
 
 
