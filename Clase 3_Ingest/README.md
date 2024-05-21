@@ -46,7 +46,7 @@ ls
 
 
 
-/home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
+hdfs dfs -put /home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
 hdfs dfs -ls /ingest
 ```
 ![[imagen4](./Clase 3_Ingest/hadoop ingest.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/353014f8ef46b72815fcd103fef4267b3f126320/Clase%203_Ingest/hadoop%20ingest.png)
