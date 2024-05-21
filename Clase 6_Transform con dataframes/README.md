@@ -4,11 +4,6 @@
 Hasta ahora Habiamos utilizado "vistas de SQL" para trabajar con SQL, ahora vamos a practicar gestionar DataFrames con Pyspark.
 
 
-
-```sh
-
-```
-
 ```sh
 pyspark
 ```
