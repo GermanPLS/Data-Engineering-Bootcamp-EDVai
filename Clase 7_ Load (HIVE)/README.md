@@ -2,7 +2,7 @@
 
 Hasta Ahora lo que hicimos fue la ingesta (EXTRACT) de un archivo .csv, que estaba en un repositorio ( por ejemplo: S3) en nuestro reositorio  HDFS( area landing / raw).
 
-Luego hicimos la etapa de Transformaion con  Scala y Pyspark (TRANSFORM)
+Luego hicimos la etapa de Transformacion con  Scala y Pyspark (TRANSFORM)
 
 Ahora vamos a ver la etapa de LOAD, guardar la informacion que procesamos en nuestro DW.
 
