@@ -38,7 +38,7 @@ new_df.show(5)
 
 ```sh
 pyspark
-df = spark.read.option("header", "true").csv("hdfs://172.17.0.2:9000/ingest/yellow_tripdata_2021-01.csv"))
+df = spark.read.option("header", "true").csv("hdfs://172.17.0.2:9000/ingest/yellow_tripdata_2021-01.csv")
 df.show(5)
 ```
 
