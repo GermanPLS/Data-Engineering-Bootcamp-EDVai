@@ -40,8 +40,14 @@ Una forma de tener mi flujo de informacion dentro de un proyecto de Big Data.
 
  
  ### ETAPAS
+![[imagen1](./Clase 9_Data Pipeline - Airflow/imagenes/1 ingesta.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/1%20ingesta.png)
+
+![[imagen2](./Clase 9_Data Pipeline - Airflow/imagenes/2 transformacion.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/2%20transformacion.png)
+
+![[imagen3](./Clase 9_Data Pipeline - Airflow/imagenes/3 almacenamiento.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/3%20almacenamiento.png)
 
 
+![[imagen4](./Clase 9_Data Pipeline - Airflow/imagenes/4 etapa completa.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/4%20etapa%20completa.png)
 
 ### ORQUESTACION
 
@@ -106,6 +112,8 @@ Airflow normalmente consiste en 5 componentes principales:
         los flujos de trabajo definidos. Es utilizado por el Scheduler, el
         Executor y el Webserver para guardar sus estados(usualmente usa PostgreSQL) .
 ```
+![[imagen5](./Clase 9_Data Pipeline - Airflow/imagenes/5 airflow arquitectura.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/5%20airflow%20arquitectura.png)
+
 Apache Airflow - parámetros
 
 Los principales parámetros de Airflow son:
@@ -185,6 +193,7 @@ LOCATION '/tables/external/tripdata';
 
 
 ```
+![[imagen6](./Clase 9_Data Pipeline - Airflow/imagenes/6  e1.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/6%20%20e1.png)
 
 ### Ejercicio 2
 
@@ -194,7 +203,7 @@ LOCATION '/tables/external/tripdata';
 describe airport_trips;
 
 ```
-
+![[imagen7](./Clase 9_Data Pipeline - Airflow/imagenes/7  e2.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/7%20%20e2.png)
 
 ### Ejercicio 3
 
@@ -565,3 +574,8 @@ OK
 Time taken: 0.071 seconds, Fetched: 2 row(s)
 hive>
 ```
+![[imagen9](./Clase 9_Data Pipeline - Airflow/imagenes/9 airflow1.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/9%20airflow1.png)
+
+
+![[imagen10](./Clase 9_Data Pipeline - Airflow/imagenes/10 airflow2.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/10%20airflow2.png)
+
