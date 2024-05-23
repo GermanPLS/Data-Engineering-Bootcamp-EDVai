@@ -216,15 +216,15 @@ ingestarlos en HDFS:
 
 
 ```sh
-docker exec -it edvai_hadoop14 bash
+docker exec -it edvai_hadoop bash
 su hadoop
 cd /home/hadoop/scripts/
 ls -1
 
 # creo el scripts
-cat > ingest_parquet.sh
+cat > ingest.sh
 
-chmod 777 ingest_parquet.sh
+chmod 777 ingest.sh
 
 # ejecuto el scripts
 
@@ -234,7 +234,7 @@ chmod 777 ingest_parquet.sh
 
 ingest_parquet.sh
 
-Realizo la Ingesta en HDFS /Ingest de los archivos de viajes de taxi NY en formato .parquet + archivo .cvs delos codigos Id de los viajes (para saber el ID de los aeropuertos y usar en ejercicio 4).
+Realizo la Ingesta en HDFS /Ingest de los archivos de viajes de taxi NY en formato .parquet 
 
 
 ```sh
@@ -243,7 +243,6 @@ rm -f /home/hadoop/landing/*
 wget -P /home/hadoop/landing/ https://dataengineerpublic.blob.core.windows.net/data-engineer/yellow_tripdata_2021-01.parquet
 
 wget -P /home/hadoop/landing/ https://dataengineerpublic.blob.core.windows.net/data-engineer/yellow_tripdata_2021-02.parquet
-
 
 /home/hadoop/hadoop/bin/hdfs dfs -rm -f /ingest/*
 
@@ -273,136 +272,9 @@ Found 2 items
 
 Crear un archivo .py que permita, mediante Spark, crear un data frame uniendo los viajes del mes 01 y mes 02 del año 2021 y luego Insertar en la tabla airport_trips losviajes que tuvieron como inicio o destino aeropuertos, que hayan pagado con dinero.
 
-## Transformation.py
 
-1) primero lo voy hacer en Jupyter notebook con pyspark, en el contenedor Hadoop
-
-2) hago lo mismo pero genero un scripts .py en:
-
-         /home/hadoop/scripts/transformation.py
-
-
-
-```sh
-# en cmd
-# Ingreso al contenedor de Hadoop para usar Jupyter
-
-docker start edvai_hadoop14
-docker exec -it edvai_hadoop14 bash
-su hadoop
-
-
-# Cambiar los permisos del script:
-chmod 777 /home/hadoop/scripts/pyspark_jupyter.sh
-
-# ejecuto el script
-./home/hadoop/scripts/pyspark_jupyter.sh
-
-# Al ejecutar el script nos dara la ruta al cual debemos acceder:
-
-    http://127.0.0.1:8889/tree?token=b55e24ad ...
-
-Dentro de Jupyter:
-
-ingresando a través de las carpetas a /home/hadoop/notebooks
-
-Ahi adentro iniciomos un nuevo notebook -->  New y luego Python 3
-```
-
-### Jupyter Notebook
-
-```sh
-
-# creamos una SparkSession
-from pyspark.sql import SparkSession
-spark = SparkSession.builder \
-.master("spark://localhost:7077") \
-.getOrCreate()
-
-
-# Generamos un dataframe y leemos el primer archivo .parquet
-
-df_1 = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/ingest/yellow_tripdata_2021-01.parquet")
-
-# Generamos otro dataframe y leemos el segundo archivo .parquet
-
-df_2= spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/ingest/yellow_tripdata_2021-02.parquet")
-
-
-# Realizo la union de 2 dataframe
-
-df = df_1.union(df_2)
-df.show(5)
-
-
-# creo una vista y un dataFrame nuevo
-
-df.createOrReplaceTempView("aeropuerto_vista")
-new_df = spark.sql("select tpep_pickup_datetime, airport_fee, payment_type, tolls_amount  from aeropuerto_vista ")
-new_df.show(4)
-
-+--------------------+-----------+------------+------------+
-|tpep_pickup_datetime|airport_fee|payment_type|tolls_amount|
-+--------------------+-----------+------------+------------+
-| 2020-12-31 21:30:10|       null|           2|         0.0|
-| 2020-12-31 21:51:20|       null|           2|         0.0|
-| 2020-12-31 21:43:30|       null|           1|         0.0|
-| 2020-12-31 21:15:48|       null|           1|         0.0|
-+--------------------+-----------+------------+------------+
-only showing top 4 rows
-
-# hago un casteo
-
-new_df1 = spark.sql("select tpep_pickup_datetime,  cast(airport_fee as float) , cast(payment_type as int), tolls_amount from aeropuerto_vista ")
-
-# hago un filtrado  
-
-new_df2 = spark.sql("select tpep_pickup_datetime, airport_fee, payment_type, tolls_amount  from aeropuerto_vista where payment_type = 2 and airport_fee > 0")
-
-new_df2.show(4)
-
-+--------------------+-----------+------------+------------+
-|tpep_pickup_datetime|airport_fee|payment_type|tolls_amount|
-+--------------------+-----------+------------+------------+
-| 2021-02-21 02:36:21|       1.25|           2|         0.0|
-+--------------------+-----------+------------+------------+
-
-# creo una nueva vista y un nuevo dataframe para insertar los datos en la table airport_trips en Hive.
-
-
-new_df2.createOrReplaceTempView("viaje_aeropuertofinal")
-spark.sql("insert into tripdata.airport_trips select* from viaje_aeropuertofinal")
-
-
-```
-
-En hive ( en el entorno Hadoop con Jupyer con pyspark, tabla creada ejercicio 2)
-
-```sql
-
-hive> show tables;
-OK
-airport_trips
-tripdata_table
-Time taken: 0.046 seconds, Fetched: 2 row(s)
-hive> describe airport_trips;
-OK
-tpep_pickup_datetime    date
-airport_fee             double
-payment_type            int
-tolls_amount            double
-Time taken: 0.044 seconds, Fetched: 4 row(s)
-hive>
-
-hive> select* from airport_trips;
-OK
-2021-02-21      1.25    2       0.0
-Time taken: 0.076 seconds, Fetched: 1 row(s)
-hive>
-```
 
 # /home/hadoop/scripts/transformation.py
-
 
 ```sh
 hadoop@d937765cbe7f:~/scripts$ cat transformation.py
@@ -444,6 +316,30 @@ hadoop@d937765cbe7f:~/scripts$
 
 ```
 
+En hive ( en el entorno Hadoop con Jupyer con pyspark, tabla creada ejercicio 2)
+
+```sql
+
+hive> show tables;
+OK
+airport_trips
+tripdata_table
+Time taken: 0.046 seconds, Fetched: 2 row(s)
+hive> describe airport_trips;
+OK
+tpep_pickup_datetime    date
+airport_fee             double
+payment_type            int
+tolls_amount            double
+Time taken: 0.044 seconds, Fetched: 4 row(s)
+hive>
+
+hive> select* from airport_trips;
+OK
+2021-02-21      1.25    2       0.0
+Time taken: 0.076 seconds, Fetched: 1 row(s)
+hive>
+```
 
 
 Ejercicio 5
