@@ -243,3 +243,158 @@ values ( 5,'south east' );
 select *
 from region; 
 ```
+
+
+--  20. Obtener la lista de los nombres de todos los empleados y los nombres de los gerentes de departamento.
+
+```sql
+select first_name  
+from employees 
+
+union
+
+select first_name 
+from employees 
+where employee_id = reports_to ;
+```
+
+
+
+-- SUBQUERIES
+
+
+-- 21. Obtener los productos del stock que han sido vendidos
+
+```sql
+SELECT Product_Name, PRODUCT_ID
+FROM Products
+WHERE Product_ID IN (
+    SELECT DISTINCT Product_ID
+    FROM Order_Details
+);
+```
+
+
+
+-- 22. Obtener los clientes que han realizado un pedido con destino a Argentina.
+```sql
+SELECT *
+FROM customers
+WHERE customer_id IN (
+    SELECT DISTINCT customer_id
+    FROM orders
+    WHERE ship_country = 'Argentina'
+);
+```
+
+
+
+
+--  23.Obtener el nombre de los productos que nunca han sido pedido por clientes de Francia.
+
+```sql
+SELECT Product_Name
+FROM Products
+WHERE Product_ID NOT IN (
+    SELECT Product_ID
+    FROM Order_Details
+    WHERE Order_ID IN (
+        SELECT Order_ID
+        FROM Orders
+        WHERE Customer_ID IN (
+            SELECT Customer_ID
+            FROM Customers
+            WHERE Country = 'France'
+        )
+    )
+);
+
+```
+
+
+
+--  GROUP BY
+
+-- 24. Obtener la cantidad de productos vendidos por identificador de orden
+```sql
+SELECT Order_ID, SUM(Quantity) 
+FROM Order_Details
+GROUP BY Order_ID;
+```
+
+
+-- 25 Obtener el promedio de los productos en stock por producto
+  
+```sql
+SELECT Product_name, AVG(Units_In_Stock) 
+FROM Products
+GROUP BY Product_name;
+
+```
+
+
+-- HAVING 
+
+-- 26  CANTIDAD DE PRODUCTOS EN STOCK POR PRODUCTO, DONDE HAYA MAS D E100 PRODUCTOS EN STOCK
+
+
+```sql
+SELECT Product_NAME, SUM(Units_In_Stock) --AS CantidadEnStock
+FROM Products
+GROUP BY Product_NAME
+HAVING SUM(Units_In_Stock) > 100;
+
+```
+
+
+-- 27 Obtener el promedio de pedidos por cada compania y solo mostrar aquellas con un promedio de pedidos superior a 10
+```sql
+select
+    c.company_name,
+    sum(o.order_id) / count(o.order_id) as avg_orders
+from
+    orders o
+    left join customers c on o.customer_id = c.customer_id
+group by
+    c.company_name
+having
+    sum(o.order_id) / count(o.order_id) > 10;
+
+```
+
+
+
+
+
+-- CASE
+
+
+-- 28.  Obtener el nombre del prodducto y su categoria, pero muestre "Discuntinued" en lugar del nombre de la categoria si el producto ha sido discuntinuado
+
+```sql
+SELECT 
+    Product_Name,
+    CASE 
+        WHEN Discontinued = 1 THEN 'Discontinued'
+        ELSE Category_Name
+    END AS Category
+FROM 
+    Products
+    INNER JOIN Categories ON Products.Category_ID = Categories.Category_ID;
+
+```
+   
+   -- 29.  obtener el nombre del empleado y su titulo, pero muestre " Gerente de Ventas" en lugar del titulo si el empleado es un gerente de ventas ( Sales Manager)
+
+```sql
+ SELECT 
+    First_Name || ' ' || Last_Name AS NombreEmpleado,
+    CASE 
+        WHEN Title = 'Sales Manager' THEN 'Gerente de Ventas'
+        ELSE Title
+    END AS Titulo
+FROM 
+    Employees;
+   
+   ```
+      
