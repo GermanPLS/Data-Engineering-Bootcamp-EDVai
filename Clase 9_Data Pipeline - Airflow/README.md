@@ -9,7 +9,7 @@ Diccionario de datos:
 
 https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf
 
-### Ejercicio 1
+## Ejercicio 1
 
  En Hive, crear la siguiente tabla (externa) en la base de datos tripdata:
 
@@ -38,7 +38,7 @@ LOCATION '/tables/external/tripdata';
 ```
 ![[imagen6](./Clase 9_Data Pipeline - Airflow/imagenes/6  e1.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/6%20%20e1.png)
 
-### Ejercicio 2
+## Ejercicio 2
 
  En Hive, mostrar el esquema de airport_trips
 
@@ -48,7 +48,7 @@ describe airport_trips;
 ```
 ![[imagen7](./Clase 9_Data Pipeline - Airflow/imagenes/7  e2.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/7%20%20e2.png)
 
-### Ejercicio 3
+## Ejercicio 3
 
 Crear un archivo .bash que permita descargar los archivos mencionados abajo e
 ingestarlos en HDFS:
@@ -111,7 +111,7 @@ Found 2 items
 
 
 
-### Ejercicio 4
+## Ejercicio 4
 
 Crear un archivo .py que permita, mediante Spark, crear un data frame uniendo los viajes del mes 01 y mes 02 del año 2021 y luego Insertar en la tabla airport_trips losviajes que tuvieron como inicio o destino aeropuertos, que hayan pagado con dinero.
 
@@ -185,7 +185,7 @@ hive>
 ```
 
 
-Ejercicio 5
+## Ejercicio 5
 
 
 Realizar un proceso automático en Airflow que orqueste los archivos creados en los
