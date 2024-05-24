@@ -10,7 +10,7 @@ Diccionario de datos:
 
 https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf
 
-### Ejercicio 1
+## Ejercicio 1
 
  En Hive, crear la siguiente tabla (externa) en la base de datos tripdata:
 
@@ -39,7 +39,7 @@ LOCATION '/tables/external/tripdata';
 ```
 ![[imagen6](./Clase 9_Data Pipeline - Airflow/imagenes/6  e1.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/6%20%20e1.png)
 
-### Ejercicio 2
+## Ejercicio 2
 
  En Hive, mostrar el esquema de airport_trips
 
@@ -49,7 +49,7 @@ describe airport_trips;
 ```
 ![[imagen7](./Clase 9_Data Pipeline - Airflow/imagenes/7  e2.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/78e72279b8ce0afa7a67b091472da5bd4d56016d/Clase%209_Data%20Pipeline%20-%20Airflow/imagenes/7%20%20e2.png)
 
-### Ejercicio 3
+## Ejercicio 3
 
 Crear un archivo .bash que permita descargar los archivos mencionados abajo e
 ingestarlos en HDFS:
@@ -58,7 +58,7 @@ ingestarlos en HDFS:
 
     - Yellow_tripdata_2021-02.parquet
 
-
+Shell
 ```sh
 docker exec -it edvai_hadoop bash
 su hadoop
@@ -72,11 +72,11 @@ chmod 777 ingest.sh
 
 # ejecuto el scripts
 
-./ingest_parquet.sh
+./ingest.sh
 
 ```
 
-ingest_parquet.sh
+Archivo ingest.sh
 
 Realizo la Ingesta en HDFS /Ingest de los archivos de viajes de taxi NY en formato .parquet 
 
@@ -112,13 +112,13 @@ Found 2 items
 
 
 
-### Ejercicio 4
+## Ejercicio 4
 
 Crear un archivo .py que permita, mediante Spark, crear un data frame uniendo los viajes del mes 01 y mes 02 del año 2021 y luego Insertar en la tabla airport_trips losviajes que tuvieron como inicio o destino aeropuertos, que hayan pagado con dinero.
 
 
 
-# /home/hadoop/scripts/transformation.py
+### Archivo transformation.py  ( /home/hadoop/scripts/transformation.py )
 
 ```sh
 hadoop@d937765cbe7f:~/scripts$ cat transformation.py
@@ -160,7 +160,7 @@ hadoop@d937765cbe7f:~/scripts$
 
 ```
 
-En hive ( en el entorno Hadoop con Jupyer con pyspark, tabla creada ejercicio 2)
+En hive 
 
 ```sql
 
@@ -186,13 +186,12 @@ hive>
 ```
 
 
-Ejercicio 5
-
+## Ejercicio 5
 
 Realizar un proceso automático en Airflow que orqueste los archivos creados en los
 puntos 3 y 4. Correrlo y mostrar una captura de pantalla (del DAG y del resultado en labase de datos)
 
-
+### Veo el archivo ingest-transform.py
 ```sh
 ingreso a:
 
@@ -252,6 +251,8 @@ hadoop@d937765cbe7f:~/airflow/dags$
 
 
 ```
+
+### Veo el archivo ingest.sh
 ```
 hadoop@a12c3f03e3c1:~/scripts$ cat ingest.sh
 rm -f /home/hadoop/landing/*
@@ -264,17 +265,7 @@ wget -P /home/hadoop/landing/ https://dataengineerpublic.blob.core.windows.net/d
 /home/hadoop/hadoop/bin/hdfs dfs -rm -f /ingest/*
 ```
 
-```
-hadoop@a12c3f03e3c1:~/scripts$ cat ingest.sh
-rm -f /home/hadoop/landing/*
-
-wget -P /home/hadoop/landing/ https://dataengineerpublic.blob.core.windows.net/data-engineer/yellow_tripdata_2021-01.parquet
-
-wget -P /home/hadoop/landing/ https://dataengineerpublic.blob.core.windows.net/data-engineer/yellow_tripdata_2021-02.parquet
-
-
-/home/hadoop/hadoop/bin/hdfs dfs -rm -f /ingest/*
-```
+### Veo el archivo transformation.py
 
 ```
 hadoop@a12c3f03e3c1:~/scripts$ cat transformation.py
@@ -304,7 +295,7 @@ spark.sql("insert into tripdata.airport_trips select* from viaje_aeropuertofinal
 ```
 
 
-
+### despues de  ejecutar Airflow, controlo Hive la ingesta de informacion
 
 ```
 hive> select* from airport_trips;
