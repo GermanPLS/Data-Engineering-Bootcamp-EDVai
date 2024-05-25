@@ -50,12 +50,14 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
 
 ```
-
-
+![[imagen1](./Clase 6_Transformacion_SQL/Imagenes/h1.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h1.png)
+![[imagen2](./Clase 6_Transformacion_SQL/Imagenes/h11.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h11.png)
 
 ## Ejercicio 2. 
 
 En Hive, hacer un ‘describe’ de las tablas passengers y distance.
+
+![[imagen3](./Clase 6_Transformacion_SQL/Imagenes/h2.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h2.png)
 
 ## Ejercicio 3.
 
@@ -68,6 +70,7 @@ también puedes repetir los mismos en SQL (opcional).
 wget -P /home/hadoop/landing/ https://dataengineerpublic.blob.core.windows.net/data-engineer/yellow_tripdata_2021-01.csv
 hdfs dfs -put /home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
 ```
+![[imagen4](./Clase 6_Transformacion_SQL/Imagenes/h3.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h3.png)
 
 ## Ejercicio 4.
 
@@ -80,6 +83,11 @@ hdfs dfs -put /home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
 
  Insertar en la tabla payments (VendorID, tpep_pickup_datetetime, payment_type, total_amount) Solamente los pagos con tarjeta de crédito.
 
+![[imagen5](./Clase 6_Transformacion_SQL/Imagenes/h5.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h5.png)
+
+![[imagen6](./Clase 6_Transformacion_SQL/Imagenes/h51.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h51.png)
+
+![[imagen7](./Clase 6_Transformacion_SQL/Imagenes/h52.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h52.png)
 
  ## Ejercicio 6.
 
@@ -87,7 +95,11 @@ hdfs dfs -put /home/hadoop/landing/yellow_tripdata_2021-01.csv /ingest
 total_amount) los registros cuya cantidad de pasajeros sea mayor a 2 y el total del viaje
 cueste más de 8 dólares.
 
+![[imagen8](./Clase 6_Transformacion_SQL/Imagenes/h6.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h6.png)
 
+![[imagen9](./Clase 6_Transformacion_SQL/Imagenes/h61.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h61.png)
+
+![[imagen10](./Clase 6_Transformacion_SQL/Imagenes/h62.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h62.png)
 
 
 ## Ejercicio 7.
@@ -95,6 +107,12 @@ cueste más de 8 dólares.
 Insertar en la tabla tolls (tpep_pickup_datetetime, passenger_count, tolls_amount,
 total_amount) los registros que tengan pago de peajes mayores a 0.1 y cantidad de
 pasajeros mayores a 1.
+
+![[imagen11](./Clase 6_Transformacion_SQL/Imagenes/h7.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h7.png)
+
+![[imagen12](./Clase 6_Transformacion_SQL/Imagenes/h71.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h71.png)
+
+![[imagen13](./Clase 6_Transformacion_SQL/Imagenes/h72.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h72.png)
 
 ## Ejercicio 8.
 
@@ -107,6 +125,7 @@ viajes en la fecha 2021-01-18.
 new_df = spark.sql("select cast(tpep_pickup_datetime as date), cast(passenger_count as int), cast(congestion_surcharge as double), cast(total_amount as double) from tripdata_vista where CAST(tpep_pickup_datetime AS DATE) = '2021-01-18' and cast(congestion_surcharge as double) > 0 ")
 
 ```
+![[imagen14](./Clase 6_Transformacion_SQL/Imagenes/h8.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h8.png)
 
 ## Ejercicio 9.
 
@@ -117,3 +136,7 @@ pasajero (passenger_count = 1) y hayan recorrido más de 15 millas (trip_distanc
 ```SH
 new_df = spark.sql("select cast(tpep_pickup_datetime as date), cast(passenger_count as int), cast(trip_distance as double), cast(total_amount as double) from tripdata_vista where CAST(tpep_pickup_datetime AS DATE) = '2020-12-31' and cast(trip_distance as double) > 15 and cast(passenger_count as int) = 1 ")
 ```
+
+![[imagen15](./Clase 6_Transformacion_SQL/Imagenes/h9.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h9.png)
+
+![[imagen16](./Clase 6_Transformacion_SQL/Imagenes/h91.png](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/04897d9270949473246727273667036a9dd22533/Clase%206_Transformacion_SQL/Imagenes/h91.png)
