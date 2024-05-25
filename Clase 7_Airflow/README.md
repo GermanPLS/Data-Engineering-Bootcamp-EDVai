@@ -138,9 +138,9 @@ df = df_1.union(df_2)
 
 df.createOrReplaceTempView("aeropuerto_vista")
 new_df = spark.sql("select tpep_pickup_datetime, airport_fee, payment_type, tolls_amount  from aeropuerto_vista ")
-
+# hago un casteo
 new_df1 = spark.sql("select tpep_pickup_datetime,  cast(airport_fee as float) , cast(payment_type as int), tolls_amount from aeropuerto_vista ")
-
+# hago un filtrado
 new_df2 = spark.sql("select tpep_pickup_datetime, airport_fee, payment_type, tolls_amount  from aeropuerto_vista where payment_type = 2 and airport_fee > 0")
 
 new_df2.createOrReplaceTempView("viaje_aeropuertofinal")
