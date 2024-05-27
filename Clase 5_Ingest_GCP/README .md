@@ -7,7 +7,7 @@
 
 1. Crear un Bucket Regional standard en Finlandia llamado demo-bucket-edva.
 
-![[imagen2](./Clase 8_Ingest_GCP/e1 gcp.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/8f89bb40f44451fc40268f2069bb4d0c1430aabe/Clase%208_Ingest_GCP/e1%20gcp.png)
+![[imagen2](./Clase 5_Ingest_GCP/e1 gcp.png)](https://github.com/GermanPLS/Bootcamp-Data-Engineering-----EDVai/blob/4ef8fa6a873b9bb0fcc0a415f3aa694292b815d2/Clase%205_Ingest_GCP/e1%20gcp.png)
 
 2. Hacer ingest con la herramienta CLI Gsutil de 5 archivos csv en el bucket
 data-bucket-demo-1 (mostrar mediante un print screen esta tarea).
