@@ -7,7 +7,7 @@
 
  Crear una base de datos llamada logs.
 
-   use logs
+    use logs
    
 
 
