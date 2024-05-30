@@ -7,8 +7,8 @@
 
  Crear una base de datos llamada logs.
 
-    test> use logs
-    switched to db logs
+   use logs
+   
 
 
 
