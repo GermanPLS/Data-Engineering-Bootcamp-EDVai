@@ -16,8 +16,8 @@
 
 Crear una colección llamada users
 
-    logs> db.createCollection("users")
-    { ok: 1 }
+      db.createCollection("users")
+    
 
 
 
