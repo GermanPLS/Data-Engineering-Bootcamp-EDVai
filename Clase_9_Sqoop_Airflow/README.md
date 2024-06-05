@@ -89,16 +89,11 @@ from
 ### Script pedidos.sh
 
 ```sh
-# Remove old Northwind Analytics files in HDFS
-/home/hadoop/hadoop/bin/hdfs dfs -rm -r /sqoop/ingest/envios/*
-
-# Download Clientes from Northwind DB
 /usr/lib/sqoop/bin/sqoop import \
-
 --connect jdbc:postgresql://172.17.0.3:5432/northwind \
 --username postgres \
---P \
---query "select o.order_id, cast(o.shipped_date as varchar), c.company_name, c.phone from orders o left join customers c on o.customer_id = c.customer_id where \$CONDITIONS" \
+--password-file file:///home/hadoop/sqoop/scripts/sqoop.pass \
+--query "SELECT o.order_id, o.shipped_date, c.company_name, c.postal_code FROM orders o JOIN customers c on c.customer_id = o.customer_id WHERE \$CONDITIONS " \
 --m 1 \
 --target-dir /sqoop/ingest/envios \
 --as-parquetfile \
@@ -305,3 +300,5 @@ if __name__ == "__main__":
     dag.cli
 
  ```  
+
+
