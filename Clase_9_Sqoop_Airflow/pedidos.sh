@@ -3,11 +3,11 @@
 
 # Download Clientes from Northwind DB
 
-sqoop import \
+/usr/lib/sqoop/bin/sqoop import \
 --connect jdbc:postgresql://172.17.0.3:5432/northwind \
 --username postgres \
 --password-file file:///home/hadoop/sqoop/scripts/sqoop.pass \
---query "select o.order_id, cast(o.shipped_date as varchar), c.company_name, c.phone from orders o left join customers c on o.customer_id = c.customer_id where $CONDITIONS" \
+--query "SELECT o.order_id, o.shipped_date, c.company_name, c.phone FROM orders o JOIN customers c on c.customer_id = o.customer_id WHERE \$CONDITIONS " \
 --m 1 \
 --target-dir /sqoop/ingest/envios \
 --as-parquetfile \

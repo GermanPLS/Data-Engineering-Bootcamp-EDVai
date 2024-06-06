@@ -93,7 +93,7 @@ from
 --connect jdbc:postgresql://172.17.0.3:5432/northwind \
 --username postgres \
 --password-file file:///home/hadoop/sqoop/scripts/sqoop.pass \
---query "SELECT o.order_id, o.shipped_date, c.company_name, c.postal_code FROM orders o JOIN customers c on c.customer_id = o.customer_id WHERE \$CONDITIONS " \
+--query "SELECT o.order_id, o.shipped_date, c.company_name, c.phone FROM orders o JOIN customers c on c.customer_id = o.customer_id WHERE \$CONDITIONS " \
 --m 1 \
 --target-dir /sqoop/ingest/envios \
 --as-parquetfile \
@@ -211,14 +211,13 @@ df = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/sqoop/i
 
 df.createOrReplaceTempView("view_order")
 
-new_df = spark.sql("select order_id, cast(unit_price as double), quantity, cast(discount as double) from view_order")
+new_df = spark.sql("select order_id,(unit_price - discount) as unit_price_discount, quantity, ((unit_price - discount) * quantity) as total_price from view_order")
 
 
 df1 = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/sqoop/ingest/envios")
 df1.createOrReplaceTempView("view_envios")
 
-
-new_df1 = spark.sql("select order_id, cast(shipped_date as date), company_name, phone  from view_envios")
+new_df1 = spark.sql("select order_id, cast(from_unixtime(shipped_date) as date) as shipped_date, company_name, phone from view_envios")
 
 
 df_final = new_df1.join(new_df, on="order_id", how="inner")
@@ -230,6 +229,14 @@ spark.sql("insert into northwind_analytics.products_sent select* from view_final
 
 ![alt text](imagenes/e6.png)
 
+
+
+## Ejercicio 7
+
+. Realizar un proceso automático en Airflow que orqueste los pipelines creados en los
+puntos anteriores. Crear un grupo para la etapa de ingest y otro para la etapa de
+process. Correrlo y mostrar una captura de pantalla (del DAG y del resultado en la base
+de datos)
 
 ## DAG 
 
@@ -286,7 +293,7 @@ with DAG(
 
         processing_table_2_3 = BashOperator(
             task_id='processing_table_2_3',
-            bash_command='ssh hadoop@172.17.0.2 /home/hadoop/spark/bin/spark-submit --files /home/hadoop/hive/conf/hive-site.xml /home/hadoop/scripts//envio.py',
+            bash_command='ssh hadoop@172.17.0.2 /home/hadoop/spark/bin/spark-submit --files /home/hadoop/hive/conf/hive-site.xml /home/hadoop/scripts/envio.py',
         )
 
     finaliza_proceso = DummyOperator(
@@ -301,4 +308,6 @@ if __name__ == "__main__":
 
  ```  
 
+![alt text](imagenes/e7.png)
 
+![alt text](imagenes/e71.png)
