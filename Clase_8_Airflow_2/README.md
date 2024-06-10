@@ -153,19 +153,53 @@ spark.sql("insert into formula1.driver_results select* from viaje_final1")
 b). insertar en la tabla constructor_result quienes obtuvieron más puntos en el
 Spanish Grand Prix en el año 1991.
 
+#### Archivo transformation_constructors.py
+```sh
+from pyspark.context import SparkContext
+from pyspark.sql.session import SparkSession
+from pyspark.sql import HiveContext
+sc = SparkContext('local')
+spark = SparkSession(sc)
+hc = HiveContext(sc)
 
 
 
+constructors_df = spark.read.option("header", "true").csv("hdfs://172.17.0.2:9000/ingest/constructors.csv")
+races_df = spark.read.option("header", "true").csv("hdfs://172.17.0.2:9000/ingest/races.csv")
+results_df = spark.read.option("header", "true").csv("hdfs://172.17.0.2:9000/ingest/results.csv")
 
 
+constructors_df.createOrReplaceTempView("constructors")
+races_df.createOrReplaceTempView("races")
+results_df.createOrReplaceTempView("results")
+
+SpanishGP = spark.sql("""
+    SELECT 
+        CAST(c.constructorId AS STRING) AS constructorref, 
+        CAST(c.name AS STRING) AS cons_name, 
+        CAST(c.nationality AS STRING) AS cons_nationality, 
+        CAST(c.url AS STRING) AS url,
+        CAST(r.points AS DOUBLE) AS points
+    FROM constructors c
+    INNER JOIN results r ON c.constructorId = r.constructorId
+    INNER JOIN races ra ON ra.raceId = r.raceId
+    WHERE ra.circuitId IN (4, 12, 26, 45, 49, 67) AND r.points != 0 AND ra.year = 1991
+""")
+
+
+SpanishGP.write.mode("overwrite").saveAsTable("formula1.constructor_results")
+
+
+
+```
 
 ## Ejercicio 5.
 
  Realizar un proceso automático en Airflow que orqueste los archivos creados en los
 puntos 3 y 4. Correrlo y mostrar una captura de pantalla (del DAG y del resultado en la base de datos)
 
+![alt text](image.png)
 
-![alt text](e5.png)
 
 ![alt text](e51.png)
 
@@ -180,7 +214,7 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.dummy import DummyOperator
 from airflow.utils.dates import days_ago
-
+from airflow.utils.task_group import TaskGroup
 
 
 args = {
@@ -211,24 +245,25 @@ with DAG(
         bash_command='/usr/bin/sh /home/hadoop/scripts/formula.sh ',
     )
 
-
-    transform = BashOperator(
-        task_id='transform',
+    with TaskGroup('Transform') as Transform:
+        transform_drivers = BashOperator(
+        task_id='transform_drivers',
         bash_command='ssh hadoop@172.17.0.2 /home/hadoop/spark/bin/spark-submit --files /home/hadoop/hive/conf/hive-site.xml /home/hadoop/scripts/transformation_driver.py ',
     )
-
+        transform_constructors = BashOperator(
+        task_id='transform_constructors',
+        bash_command='ssh hadoop@172.17.0.2 /home/hadoop/spark/bin/spark-submit --files /home/hadoop/hive/conf/hive-site.xml /home/hadoop/scripts/transformation_constructors.py ',
+    )
   
 
-    comienza_proceso >> ingest >> transform >> finaliza_proceso
-
-
+    comienza_proceso >> ingest >> Transform >> finaliza_proceso
 
 
 if __name__ == "__main__":
     dag.cli()
 
 ```
-![alt text](e52.png)
+![alt text](image-1.png)
 
 
-![alt text](e53.png)
+![alt text](image-2.png)
