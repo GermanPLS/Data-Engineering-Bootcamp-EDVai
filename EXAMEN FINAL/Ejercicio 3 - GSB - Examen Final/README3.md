@@ -38,11 +38,11 @@ https://www.cloudskillsboost.google/focuses/4415?catalog_rank=%7B%22rank%22%3A1%
     - Integración con otras herramientas de análisis.
 
 ## 3. ¿Por qué otra/s herramientas lo podrías reemplazar? Por qué?
-Snowflake es una plataforma de almacenamiento y análisis de datos basada en la nube. Fue diseñada para gestionar grandes volúmenes de datos y permitir análisis rápidos y eficientes.
-Snowflake en sí mismo no es una herramienta de visualización, se integra muy bien con diversas herramientas de ETL (Extract, Transform, Load) y plataformas de visualización de datos.
+    • Snowflake es una plataforma de almacenamiento y análisis de datos basada en la nube. Fue diseñada para gestionar grandes volúmenes de datos y permitir análisis rápidos y eficientes.
+    Snowflake en sí mismo no es una herramienta de visualización, se integrar muy bien con diversas herramientas de ETL (Extract, Transform, Load) y plataformas de visualización de datos.
 
 
-Databricks es una plataforma de análisis de datos basada en la nube que se centra en el procesamiento y análisis de grandes volúmenes de datos. Es conocida por su integración y optimización de Apache Spark, un motor de análisis en tiempo real y por lotes muy popular
+    • Databricks es una plataforma de análisis de datos basada en la nube que se centra en el procesamiento y análisis de grandes volúmenes de datos. Es conocida por su integración y optimización de Apache Spark, un motor de análisis en tiempo real y por lotes muy popular
 
 ## 4. ¿Cuáles son los casos de uso comunes de Data Prep de GCP?
 explorar, limpiar y preparar de datos, osea, la preparacion de datos.

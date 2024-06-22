@@ -357,17 +357,17 @@ LIMIT 10;
 
 Se pueden agregar como datos externos para mejorar el análisis de los datos recopilados :
 
-    Datos sobre equipaje, cantidad de maletas o bolsos, peso del equipaje.
+    • Datos sobre equipaje, cantidad de maletas o bolsos, peso del equipaje.
 
-    Datos sobre la perdida de equipaje, reclamos sobre el equipaje.
+    • Datos sobre la perdida de equipaje, reclamos sobre el equipaje.
 
-    satisfaccion del cliente.
+    • satisfaccion del cliente , indicadores NPS.
 
-    Datos sobre mascotas.
+    • Informacion de Datos sobre mascotas.
 
-    Retrasos y Cancelaciones.
+    • Retrasos y Cancelaciones.
 
-    Medidas de seguridad, incidentes y accidente.
+    • Medidas de seguridad, incidentes y accidente.
 -------------------
 ### 12.  Elabore sus conclusiones y recomendaciones sobre este proyecto.
 
@@ -387,4 +387,4 @@ Las aeronaves más utilizadas deben ser objeto de un mantenimiento riguroso para
 -------------------
 ### 13. Proponer una arquitectura alternativa para este proceso ya sea con herramientas on premise o cloud (Sí aplica)
 
-
+![alt text](archivos/gcp.png)

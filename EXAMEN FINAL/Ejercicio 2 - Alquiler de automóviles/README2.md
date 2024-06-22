@@ -69,6 +69,22 @@ Sugerencia: Descargar el segundo archivo con un comando similar al abajo mencion
 
 Se crea archivo script  `alquiler.sh`, guardado en `/home/hadoops/scripts`, para realizar la ingesta de archivos en `hdfs dfs /ingest`.
 
+```sh
+rm -f /home/hadoop/landing/*
+
+wget -O /home/hadoop/landing/car_rental_data.csv "https://edvaibucket.blob.core.windows.net/data-engineer-edvai/CarRentalData.csv?sp=r&st=2023-11-06T12:52:39Z&se=2025-11-06T20:52:39Z&sv=2022-11-02&sr=c&sig=J4Ddi2c7Ep23OhQLPisbYaerlH472iigPwc1%2FkG80EM%3D"
+
+ 
+wget -O /home/hadoop/landing/georef_usa_state.csv "https://dataengineerpublic.blob.core.windows.net/data-engineer/georef-united-states-of-america-state.csv"
+
+
+/home/hadoop/hadoop/bin/hdfs dfs -rm -f /ingest/*
+
+/home/hadoop/hadoop/bin/hdfs dfs -put /home/hadoop/landing/* /ingest
+
+```
+
+
 ![alt text](imagenes/e2.png)
 
 
@@ -153,9 +169,9 @@ new_df.write.mode("overwrite").saveAsTable("car_rental_db.car_rental_analytics")
 
 ### Resolucion:
 
- ## [Dag Padre](dag1_renta.py)
+ ## ---> [Dag Padre](dag1_renta.py)
 
- ## [Dag Hijo](dag2_renta.py)  
+ ## ---> [Dag Hijo](dag2_renta.py)  
 
 ![alt text](imagenes/e41.png)
 
@@ -272,5 +288,24 @@ order by review_count_avg desc;
 
 ### 6.  Elabore sus conclusiones y recomendaciones sobre este proyecto.
 
+Estas conclusiones pueden ayudar a la empresa a tomar decisiones basadas en datos y mejorar su servicio y oferta de vehículos:
+
+
+Si se observa una alta demanda y buenas valoraciones para vehículos híbridos y eléctricos, sería recomendable aumentar la disponibilidad de estos modelos.
+
+
+
+Identificar factores que puedan estar influyendo en la baja cantidad de alquileres en ciertos estados y tomar medidas para mejorar la presencia y el servicio en esas áreas.
+
+
+
+Mantener una flota adecuada de los modelos más rentados para satisfacer la demanda y evitar la falta de disponibilidad.
+
+
+Continuar monitoreando las valoraciones de los clientes y realizar mejoras en el servicio y mantenimiento de los vehículos según el feedback recibido.
 
 ### 7. Proponer una arquitectura alternativa para este proceso ya sea con herramientas on premise o cloud (Si aplica).
+
+
+
+![alt text](<../Ejercicio 1 - Aviación Civil/archivos/gcp.png>)
