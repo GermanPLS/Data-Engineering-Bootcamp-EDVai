@@ -116,10 +116,10 @@ BigQuery
 
 ## 7 Que herramienta/s utilizarían para Data Governance?
 
-Apache Atlas
+   DAtaPlex     
 
-        Aunque Apache Atlas no es un servicio nativo de GCP, puede ser implementado en la infraestructura de GCP para complementar las capacidades de gobernanza de datos.
-        Gestión avanzada de metadatos y linaje de datos, integración con sistemas de Big Data y servicios de GCP.
+        Google Cloud Dataplex es una solución integral para la gestión avanzada de datos, que combina gobernanza, seguridad y capacidades analíticas, facilitando a las organizaciones manejar sus datos de manera más eficiente y efectiva.
+        
 
 ## 8. Data Warehouse, Data Lake o Lake House?
 
@@ -135,3 +135,6 @@ Data Warehouse
 
 
 ### 10. Con que herramienta podrían desplegar toda la infraestructura de datos?
+
+
+![alt text](Lambda.png)

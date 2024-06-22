@@ -175,15 +175,19 @@ results_df.createOrReplaceTempView("results")
 
 SpanishGP = spark.sql("""
     SELECT 
-        CAST(c.constructorId AS STRING) AS constructorref, 
+        CAST(c.constructorId AS STRING) AS constructor_ref, 
         CAST(c.name AS STRING) AS cons_name, 
         CAST(c.nationality AS STRING) AS cons_nationality, 
         CAST(c.url AS STRING) AS url,
-        CAST(r.points AS DOUBLE) AS points
+        SUM(CAST(r.points AS DOUBLE)) AS points
     FROM constructors c
     INNER JOIN results r ON c.constructorId = r.constructorId
     INNER JOIN races ra ON ra.raceId = r.raceId
-    WHERE ra.circuitId IN (4, 12, 26, 45, 49, 67) AND r.points != 0 AND ra.year = 1991
+    WHERE ra.name = 'Spanish Grand Prix' 
+      AND ra.year = 1991 
+      AND r.points != 0
+    GROUP BY c.constructorId, c.constructorRef, c.name, c.nationality, c.url
+    ORDER BY points DESC
 """)
 
 

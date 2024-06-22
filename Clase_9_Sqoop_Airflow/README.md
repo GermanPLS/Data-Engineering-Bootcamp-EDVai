@@ -169,7 +169,18 @@ df = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/sqoop/i
 
 df.createOrReplaceTempView("view_clientes")
 
-new_df = spark.sql("select customer_id, company_name, cast(productos_vendidos as int) from view_clientes ")
+
+new_df = spark.sql("""
+    SELECT
+        CAST(customer_id AS STRING) AS customer_id,
+        CAST(company_name AS STRING) AS company_name,
+        CAST(productos_vendidos AS INTEGER) AS products_sold
+    FROM view_clientes
+    WHERE CAST(productos_vendidos AS INTEGER) > (
+        SELECT AVG(CAST(productos_vendidos AS INTEGER))
+        FROM view_clientes
+    )
+"""
 
 new_df.createOrReplaceTempView("view_final")
 
