@@ -24,7 +24,9 @@ https://www.cloudskillsboost.google/focuses/4415?catalog_rank=%7B%22rank%22%3A1%
 # Contestar las siguientes preguntas:
 
 ##  1. ¿Para que se utiliza data prep?
-    Dataprep es la herramienta de preparación de datos de autoservicio de Google creada en colaboración con Alteryx,  te permite realizar diversas tareas para transformar tus datos en un formato listo para análisis, informes y aprendizaje automático.
+
+Dataprep es la herramienta de preparación de datos de autoservicio de Google creada en colaboración con Alteryx,
+te permite realizar diversas tareas para transformar tus datos en un formato listo para análisis, informes y aprendizaje automático.
 
 ## 2. ¿Qué cosas se pueden realizar con DataPrep?
 
@@ -38,11 +40,15 @@ https://www.cloudskillsboost.google/focuses/4415?catalog_rank=%7B%22rank%22%3A1%
     - Integración con otras herramientas de análisis.
 
 ## 3. ¿Por qué otra/s herramientas lo podrías reemplazar? Por qué?
-    • Snowflake es una plataforma de almacenamiento y análisis de datos basada en la nube. Fue diseñada para gestionar grandes volúmenes de datos y permitir análisis rápidos y eficientes.
-    Snowflake en sí mismo no es una herramienta de visualización, se integrar muy bien con diversas herramientas de ETL (Extract, Transform, Load) y plataformas de visualización de datos.
+ • Snowflake es una plataforma de almacenamiento y análisis de datos basada en la nube. 
+   Fue diseñada para gestionar grandes volúmenes de datos y permitir análisis rápidos y eficientes.
+   Snowflake en sí mismo no es una herramienta de visualización, se integrar muy bien con diversas herramientas de 
+   ETL (Extract, Transform, Load) y plataformas de visualización de datos.
 
 
-    • Databricks es una plataforma de análisis de datos basada en la nube que se centra en el procesamiento y análisis de grandes volúmenes de datos. Es conocida por su integración y optimización de Apache Spark, un motor de análisis en tiempo real y por lotes muy popular
+• Databricks es una plataforma de análisis de datos basada en la nube que se centra en el procesamiento y análisis 
+  de grandes volúmenes de datos. 
+  Es conocida por su integración y optimización de Apache Spark, un motor de análisis en tiempo real y por lotes muy popular
 
 ## 4. ¿Cuáles son los casos de uso comunes de Data Prep de GCP?
 explorar, limpiar y preparar de datos, osea, la preparacion de datos.
@@ -73,9 +79,21 @@ Para automatizar tareas basadas en eventos (por ejemplo, cuando se sube un nuevo
 
 ## 9. ¿Qué tipos de visualizaciones se pueden crear en Data Prep de GCP?
 
+Data prep se puede conectar con Looker, que ofrece una amplia variedad de graficos y opciones de viualizaciones y analizar de forma efectiva.
 
+Graficos con Looker:
+
+    - graficos de barras.
+    - graficos de Lineas
+    - graficos de dispersion.
+    - graficos circulares.
+    - tablas.
+    . mapas
 
 ## 10. ¿Cómo se puede garantizar la calidad de los datos en Data Prep de GCP?
+
+Google Cloud Dataplex es una solución integral para la gestión avanzada de datos, que combina gobernanza, seguridad y capacidades analíticas, facilitando a las organizaciones manejar sus datos de manera más eficiente y efectiva.
+
 
 ## Arquitectura:
 
