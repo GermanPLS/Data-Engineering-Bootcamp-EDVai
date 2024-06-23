@@ -169,8 +169,6 @@ new_df.write.mode("overwrite").saveAsTable("car_rental_db.car_rental_analytics")
 
 ### Resolucion:
 
-Se crean los siguientes archivos :
-
  ## ---> [Dag Padre](dag1_renta.py)
 
  ## ---> [Dag Hijo](dag2_renta.py)  
@@ -287,6 +285,14 @@ order by review_count_avg desc;
 ```
 
 ![alt text](imagenes/e5f.png)
+
+## Visualizaciones 
+
+### [Archivo PDF](Alquileres_de_Autos.pdf)
+
+![alt text](imagenes/visualizaciones.png)
+
+
 
 ### 6.  Elabore sus conclusiones y recomendaciones sobre este proyecto.
 
