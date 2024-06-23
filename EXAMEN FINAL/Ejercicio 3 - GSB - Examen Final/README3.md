@@ -75,7 +75,9 @@ Para automatizar tareas basadas en eventos (por ejemplo, cuando se sube un nuevo
 
 ## 9. ¿Qué tipos de visualizaciones se pueden crear en Data Prep de GCP?
 
-
+    • Histograma y Gráficos de Barras.
+    • Box Plots.
+    • Diagramas de Dispersión.
 
 ## 10. ¿Cómo se puede garantizar la calidad de los datos en Data Prep de GCP?
 
