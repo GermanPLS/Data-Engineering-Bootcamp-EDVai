@@ -169,6 +169,8 @@ new_df.write.mode("overwrite").saveAsTable("car_rental_db.car_rental_analytics")
 
 ### Resolucion:
 
+Se crean los siguientes archivos :
+
  ## ---> [Dag Padre](dag1_renta.py)
 
  ## ---> [Dag Hijo](dag2_renta.py)  
