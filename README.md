@@ -20,7 +20,7 @@ El objetivo del bootcamp es aprender y practicar los conceptos fundamentales de 
 
 
 1. [Clase 1 - SQL Básico](./Clase%201%20-%20SQL/README.md) – Fundamentos de SQL y consultas básicas.
-2. [Clase 2 - SQL Avanzado](./Clase_2_SQL/README.md) – Consultas complejas, joins, agregaciones y subconsultas.
+2. [Clase 2 - SQL Avanzado](./Clase%202%20-%20SQL/README.md) – Consultas complejas, joins, agregaciones y subconsultas.
 3. [Clase 3 - Ingesta de Datos con NiFi](./03_Clase3_NiFi/README.md) – Introducción a Apache NiFi para ingestión de datos.
 4. [Clase 4 - Ingesta de Datos con Sqoop](./04_Clase4_Sqoop/README.md) – Transferencia de datos entre bases relacionales y Hadoop.
 5. [Clase 5 - GCP BigQuery](./05_Clase5_GCP_BigQuery/README.md) – Almacenamiento y consultas en la nube con BigQuery.
