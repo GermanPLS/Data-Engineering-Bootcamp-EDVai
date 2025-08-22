@@ -17,7 +17,7 @@ El objetivo del bootcamp es aprender y practicar los conceptos fundamentales de 
 
 ## 📂 Contenido por carpetas
 
-
+[Clase 1 - SQL Básico](./Clase%201%20-%20SQL/README.md)
 
 1. [Clase 1 - SQL Básico](./Clase_1_SQL/README.md) – Fundamentos de SQL y consultas básicas.
 2. [Clase 2 - SQL Avanzado](./02_Clase2_SQLAvanzado/README.md) – Consultas complejas, joins, agregaciones y subconsultas.
